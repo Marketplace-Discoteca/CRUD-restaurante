@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lista de Servicios {% endblock %}
+
+{% block contenido %} 
+
+<div class="card">
+    <div class="card-header">
+        <a
+            name=""
+            id=""
+            class="btn btn-success"
+            href="{% url 'crear' %}"
+            role="button"
+            >AGREGAR PLATO</a
+        >
+        
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">LISTA DE PLATOS</h4>
+        
+        <div class="table-responsive">
+            <table class="table table-bordered" cellspacing="0" cellpadding="8">
+                <thead class="thead-light">
+                    <tr class="text-center">
+                        <th scope="col" class="p-3">ID</th>
+                        <th scope="col" class="p-3">COMIDA</th>
+                        <th scope="col" class="p-3">CATEGORIA</th>
+                        <th scope="col" class="p-3">SUBCATEGORIA</th>
+                        <th scope="col" class="p-3">DESCRIPCIÓN</th>
+                        <th scope="col" class="p-3">PESO</th>
+                        <th scope="col" class="p-3">INSUMOS</th>
+                        <th scope="col" class="p-3">STOCK</th>
+                        <th scope="col" class="p-3">FECHA INICIO</th>
+                        <th scope="col" class="p-3">FECHA FINAL</th>
+                        <th scope="col" class="p-3">PRECIO</th>
+                        <th scope="col" class="p-3">DESCUENTO</th>
+                        <th scope="col" class="p-3">PRECIO ACTUAL</th>
+                        <th scope="col" class="p-3">VIDEO</th>
+                        <th scope="col" class="p-3">ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for servicio in servicios %}
+
+                    <tr class="text-center">
+                        <td scope="row" class="p-3">{{servicio.id}}</td>
+                        <td class="p-3">{{servicio.nombre_comida}}</td>
+                        <td class="p-3">{{servicio.categoria}}</td>
+                        <td class="p-3">{{servicio.subcategoria}}</td>
+                        <td class="p-3">{{servicio.descripcion}}</td>
+                        <td class="p-3">{{servicio.peso}}</td>
+                        <td class="p-3">{{servicio.insumos}}</td>
+                        <td class="p-3">{{servicio.stock}}</td>
+                        <td class="p-3">{{servicio.fecha_promocion_inicio}}</td>
+                        <td class="p-3">{{servicio.fecha_promocion_final}}</td>
+                        <td class="p-3">{{servicio.precio_anterior}}</td>
+                        <td class="p-3">{{servicio.descuento}}</td>
+                        <td class="p-3">{{servicio.precio_oferta}}</td>
+                        <td class="p-3">{{servicio.video}}</td>
+                        <td class="p-3">
+                            <a
+                                class="btn btn-info"
+                                href="{% url 'editar' servicio.id %}"
+                                role="button"
+                            >EDITAR</a>
+                            
+                            <a
+                                class="btn btn-danger"
+                                href="{% url 'eliminar' servicio.id %}"
+                                role="button"
+                            >BORRAR</a>
+                            
+                            <a
+                                class="btn btn-secondary"
+                                href="{% url 'detalle' servicio.id %}"
+                                role="button"
+                            >MOSTRAR</a>
+                        </td>
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

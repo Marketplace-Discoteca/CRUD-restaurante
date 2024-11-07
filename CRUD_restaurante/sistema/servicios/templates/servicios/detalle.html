@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block titulo %} Detalles del Plato {% endblock %}
+
+{% block contenido %}
+<div class="card">
+    <div class="card-header">
+        <h2>{{ servicio.nombre_comida }}</h2>
+    </div>
+    <div class="card-body">
+        <p><strong>Categoría:</strong> {{ servicio.categoria }}</p>
+        <p><strong>Subcategoría:</strong> {{ servicio.subcategoria }}</p>
+        <p><strong>Descripción:</strong> {{ servicio.descripcion }}</p>
+        <p><strong>Peso:</strong> {{ servicio.peso }}</p>
+        <p><strong>Insumos:</strong> {{ servicio.insumos }}</p>
+        <p><strong>Stock:</strong> {{ servicio.stock }}</p>
+        <p><strong>Fecha de Promoción Inicio:</strong> {{ servicio.fecha_promocion_inicio }}</p>
+        <p><strong>Fecha de Promoción Final:</strong> {{ servicio.fecha_promocion_final }}</p>
+        <p><strong>Precio Anterior:</strong> {{ servicio.precio_anterior }}</p>
+        <p><strong>Descuento:</strong> {{ servicio.descuento }}</p>
+        <p><strong>Precio Oferta:</strong> {{ servicio.precio_oferta }}</p>
+        <p><strong>Video:</strong> <a href="{{ servicio.video }}" target="_blank">{{ servicio.video }}</a></p>
+
+        <h3>Imágenes</h3>
+        <div class="row">
+            <div class="col-md-3 col-6 mb-3">
+                <img src="{{ servicio.imagen_principal.url }}" alt="Imagen Principal" class="img-fluid">
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <img src="{{ servicio.imagen_secundaria.url }}" alt="Imagen Secundaria" class="img-fluid">
+            </div>
+            {% if servicio.imagen_opcional1 %}
+            <div class="col-md-3 col-6 mb-3">
+                <img src="{{ servicio.imagen_opcional1.url }}" alt="Imagen Opcional 1" class="img-fluid">
+            </div>
+            {% endif %}
+            {% if servicio.imagen_opcional2 %}
+            <div class="col-md-3 col-6 mb-3">
+                <img src="{{ servicio.imagen_opcional2.url }}" alt="Imagen Opcional 2" class="img-fluid">
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="card-footer">
+        <a href="{% url 'servicios' %}" class="btn btn-primary">Volver a la lista</a>
+    </div>
+</div>
+{% endblock %}
